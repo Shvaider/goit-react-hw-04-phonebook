@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ContactList.module.css';
 
-const ContactList = ({ contacts, onRemoveContact }) => (
+const ContactList = ({ contacts, removeContact }) => (
   <ul className={styles.taskList}>
     {contacts.map(contact => (
       <li className={styles.taskList_item} key={contact.id}>
@@ -12,7 +12,7 @@ const ContactList = ({ contacts, onRemoveContact }) => (
             className={styles.taskList_button}
             type="button"
             name="delte"
-            onClick={() => onRemoveContact(contact.id)}
+            onClick={() => removeContact(contact.id)}
           >
             delete
           </button>
@@ -23,13 +23,50 @@ const ContactList = ({ contacts, onRemoveContact }) => (
 );
 
 ContactList.propTypes = {
-  onRemoveContact: PropTypes.func.isRequired,
+  removeContact: PropTypes.func,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
     })
   ),
 };
 export default ContactList;
+
+//////
+// import React from 'react';
+// import PropTypes from 'prop-types';
+// import styles from './ContactList.module.css';
+
+// const ContactList = ({ contacts, onRemoveContact }) => (
+//   <ul className={styles.taskList}>
+//     {contacts.map(contact => (
+//       <li className={styles.taskList_item} key={contact.id}>
+//        <p className={styles.taskList_name}>{contact.name + ':  ' + contact.number}</p>
+//         {
+//           <button
+//             className={styles.taskList_button}
+//             type="button"
+//             name="delte"
+//             onClick={() => onRemoveContact(contact.id)}
+//           >
+//             delete
+//           </button>
+//         }
+//       </li>
+//     ))}
+//   </ul>
+// );
+
+// ContactList.propTypes = {
+//   onRemoveContact: PropTypes.func.isRequired,
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired,
+//     })
+//   ),
+// };
+// export default ContactList;
